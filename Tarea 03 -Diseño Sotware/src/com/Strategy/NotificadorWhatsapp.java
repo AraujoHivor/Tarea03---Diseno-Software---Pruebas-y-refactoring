@@ -3,9 +3,8 @@ package com.Strategy;
 public class NotificadorWhatsapp implements NotificadorStrategy {
 
     @Override
-    public void notificar(String destinatario, String asunto, String mensaje) {
-        System.out.println("WhatsApp enviado a " + destinatario);
-        System.out.println("Mensaje: " + mensaje);
+    public void notificar(ContenidoNotificacion contenido) {
+        System.out.println("WhatsApp enviado a " + contenido.getDestinatario());
+        System.out.println("Mensaje: " + contenido.getMensaje());
     }
-    
 }
