@@ -1,39 +1,51 @@
 package com.Observer;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.Composite.Servicio;
 import com.Factory.Mascota;
 
 public class Reserva {
 
-    private int id;
-    private String fechaReserva;
     private double monto;
-    private Servicio servicio;
-    private Mascota mascota;
-    private ManejarReserva manejador;
+    //Observers directamente en Reserva
+    private List<ReservaListeners> observers = new ArrayList<>();
 
     public Reserva(int id, String fechaReserva, Servicio servicio, Mascota mascota) {
-        this.id = id;
-        this.fechaReserva = fechaReserva;
-        this.servicio = servicio;
-        this.mascota = mascota;
-        this.manejador = new ManejarReserva();
         this.monto = servicio.calcularPrecio(mascota);
     }
 
+    //Métodos que antes estaban en ManejarReserva
+    public void addObserver(ReservaListeners r) {
+        observers.add(r);
+    }
+
+    public void removeObserver(ReservaListeners r) {
+        observers.remove(r);
+    }
+
+    private void notificar(String mensaje) {
+        for (ReservaListeners r : observers) {
+            r.update(mensaje);
+        }
+    }
+
     public void confirmar() {
-        manejador.notificar("", "Confirmación", "Reserva confirmada");
+        notificar("Reserva confirmada");
     }
 
     public void cancelar() {
-        manejador.notificar("", "Cancelación", "Reserva cancelada");
+        notificar("Reserva cancelada");
     }
 
     public double calcularMonto() {
         return monto;
     }
 
-    public ManejarReserva getManejador() {
-        return manejador;
+    public Reserva getManejador() {
+        throw new UnsupportedOperationException("Unimplemented method 'getManejador'");
     }
+
+    
 }
