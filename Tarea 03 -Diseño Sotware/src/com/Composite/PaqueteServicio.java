@@ -7,12 +7,11 @@ import com.Factory.Mascota;
 public class PaqueteServicio implements Servicio {
 
     private String nombre;
-    private String tipo;
+    // private String tipo;  Eliminado (No aporta en nada)
     private List<Servicio> servicios = new ArrayList<>();
 
     public PaqueteServicio(String nombre, String tipo) {
         this.nombre = nombre;
-        this.tipo = tipo;
     }
 
     public boolean addService(Servicio servicio) {
@@ -47,4 +46,3 @@ public class PaqueteServicio implements Servicio {
         return true;
     }
 }
-
