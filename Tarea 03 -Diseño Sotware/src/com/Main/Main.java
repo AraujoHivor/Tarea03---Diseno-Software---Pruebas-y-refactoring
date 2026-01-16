@@ -13,9 +13,11 @@ public class Main {
 
     public static void main(String[] args) {
 
+        //Factory refactorizada (ya no recibe parámetros innecesarios)
         PerroFactory factory = new PerroFactory();
-        Mascota perro = factory.crearMascota("Max", "Labrador", 3, "", "Grande");
+        Mascota perro = factory.crearMascota("Max", 3);
 
+        //Servicios base (Composite)
         Servicio paseo = new ServicioBase("Paseo", 10);
         Servicio baño = new ServicioBase("Baño", 15);
 
@@ -23,12 +25,13 @@ public class Main {
         paquete.addService(paseo);
         paquete.addService(baño);
 
+        //Reserva (Observer sin Middle Man)
         Reserva reserva = new Reserva(1, "2025-01-10", paquete, perro);
 
-        UsuarioListener usuario =
-                new UsuarioListener("usuario@email.com", new NotificadorEmail());
+        //Listener refactorizado
+        UsuarioListener usuario = new UsuarioListener("usuario@email.com", new NotificadorEmail());
 
-        reserva.getManejador().addObserver(usuario);
+        reserva.addObserver(usuario);
 
         reserva.confirmar();
     }
