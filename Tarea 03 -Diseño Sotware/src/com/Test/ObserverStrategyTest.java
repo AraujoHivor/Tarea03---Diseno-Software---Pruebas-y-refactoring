@@ -1,4 +1,4 @@
-package com.tests;
+package com.Test;
 
 import com.Composite.PaqueteServicio;
 import com.Composite.Servicio;
@@ -7,6 +7,7 @@ import com.Factory.Mascota;
 import com.Factory.PerroFactory;
 import com.Observer.Reserva;
 import com.Observer.UsuarioListener;
+import com.Strategy.ContenidoNotificacion;
 import com.Strategy.NotificadorStrategy;
 import org.junit.jupiter.api.Test;
 
@@ -18,11 +19,11 @@ public class ObserverStrategyTest {
     static class NotificadorFake implements NotificadorStrategy {
         String ultimoDestino;
         String ultimoMensaje;
+        ContenidoNotificacion c = new ContenidoNotificacion("destino", "mensaje");
 
         @Override
-        public void notificar(String destinatario, String destino, string mensaje) {
-            this.ultimoDestino = destino;
-            this.ultimoMensaje = mensaje;
+        public void notificar(ContenidoNotificacion c) {
+            c = new ContenidoNotificacion("destino", "mensaje");
         }
     }
 
