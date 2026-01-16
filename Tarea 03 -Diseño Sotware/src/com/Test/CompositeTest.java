@@ -14,7 +14,7 @@ public class CompositeTest {
     @Test
     void paqueteSumaPrecioDeServicios() {
         // mascota dummy (si tu calcularPrecio la necesita)
-        Mascota perro = new PerroFactory().crearMascota("Max", "Labrador", 3, "", "Grande");
+        Mascota perro = new PerroFactory().crearMascota("Max",3);
 
         Servicio paseo = new ServicioBase("Paseo", 10);
         Servicio bano  = new ServicioBase("Bano", 15);

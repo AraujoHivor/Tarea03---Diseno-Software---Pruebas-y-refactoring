@@ -20,7 +20,7 @@ public class ObserverStrategyTest {
         String ultimoMensaje;
 
         @Override
-        public void notificar(String destino, String mensaje) {
+        public void notificar(String destinatario, String destino, string mensaje) {
             this.ultimoDestino = destino;
             this.ultimoMensaje = mensaje;
         }
@@ -28,7 +28,7 @@ public class ObserverStrategyTest {
 
     @Test
     void alConfirmarReservaSeNotificaAlUsuario() {
-        Mascota perro = new PerroFactory().crearMascota("Max", "Labrador", 3, "", "Grande");
+        Mascota perro = new PerroFactory().crearMascota("Max",3);
 
         Servicio paseo = new ServicioBase("Paseo", 10);
         PaqueteServicio paquete = new PaqueteServicio("Paquete Diario", "Diario");
