@@ -1,10 +1,12 @@
 package com.Observer;
+
+import com.Strategy.ContenidoNotificacion;
 import com.Strategy.NotificadorStrategy;
 
 public class UsuarioListener implements ReservaListeners {
 
-    private NotificadorStrategy notificador;
-    private String destinatario;
+    private final String destinatario;
+    private final NotificadorStrategy notificador;
 
     public UsuarioListener(String destinatario, NotificadorStrategy notificador) {
         this.destinatario = destinatario;
@@ -13,7 +15,9 @@ public class UsuarioListener implements ReservaListeners {
 
     @Override
     public void update(String mensaje) {
-        notificador.notificar(destinatario, "Notificación Reserva", mensaje);
+        ContenidoNotificacion contenido =
+                new ContenidoNotificacion(destinatario, mensaje);
+
+        notificador.notificar(contenido);
     }
-    
 }
