@@ -1,29 +1,13 @@
 package com.Factory;
 
-public class Perro implements Mascota {
-    private String nombre;
-    private int edad;
+public class Perro extends MascotaBase
+        implements MascotaConTamanio, MascotaConPreferencias, MascotaConNecesidadesEspeciales {
+
     private String tamanio;
 
     public Perro(String nombre, int edad, String tamanio) {
-        this.nombre = nombre;
-        this.edad = edad;
+        super(nombre, edad);
         this.tamanio = tamanio;
-    }
-
-    @Override
-    public boolean esCompatibleCon() {
-        return true;
-    }
-
-    @Override
-    public String getNombre() {
-        return nombre;
-    }
-
-    @Override
-    public int getEdad() {
-        return edad;
     }
 
     @Override
@@ -32,7 +16,7 @@ public class Perro implements Mascota {
     }
 
     @Override
-    public boolean getNecesidadesEspeciales() {
+    public boolean tieneNecesidadesEspeciales() {
         return false;
     }
 
@@ -45,5 +29,4 @@ public class Perro implements Mascota {
     public String getPreferencias() {
         return "Paseos y juegos";
     }
-
 }

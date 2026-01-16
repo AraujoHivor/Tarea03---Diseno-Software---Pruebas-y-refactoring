@@ -1,27 +1,10 @@
 package com.Factory;
 
-public class Ave implements Mascota {
-    private String nombre;
-    private int edad;
+public class Ave extends MascotaBase
+        implements MascotaConPreferencias, MascotaConNecesidadesEspeciales {
 
     public Ave(String nombre, int edad) {
-        this.nombre = nombre;
-        this.edad = edad;
-    }
-
-    @Override
-    public boolean esCompatibleCon() {
-        return true;
-    }
-
-    @Override
-    public String getNombre() {
-        return nombre;
-    }
-
-    @Override
-    public int getEdad() {
-        return edad;
+        super(nombre, edad);
     }
 
     @Override
@@ -30,13 +13,8 @@ public class Ave implements Mascota {
     }
 
     @Override
-    public boolean getNecesidadesEspeciales() {
+    public boolean tieneNecesidadesEspeciales() {
         return true;
-    }
-
-    @Override
-    public String getTamanio() {
-        return "Pequeño";
     }
 
     @Override
